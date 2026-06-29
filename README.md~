@@ -1,0 +1,278 @@
+ Multi-Tool AI Agent for Bangladesh 🇧🇩
+
+A LangChain-powered AI Agent that intelligently answers questions about **Bangladesh institutions, hospitals, and restaurants** using SQLite databases and performs **general knowledge searches** using a web search tool.
+
+
+
+📌 Project Overview
+
+This project builds a **Multi-Tool AI Agent** capable of answering both structured data queries and general knowledge questions.
+
+The agent automatically chooses the appropriate tool based on the user's query.
+
+Supported Features
+
+* 🏫 Query Bangladeshi educational institutions
+* 🏥 Query Bangladeshi hospitals
+* 🍽️ Query Bangladeshi restaurants
+* 🌐 Search the web for general knowledge
+* 🤖 Automatic tool selection using LangChain
+
+
+
+🛠️ Technologies Used
+
+* Python 3.11+
+* LangChain
+* LangChain Community
+* SQLite
+* Pandas
+* Tavily Search API (or another supported search API)
+* OpenAI GPT Models
+
+
+📊 Datasets
+
+This project uses the following Hugging Face datasets:
+
+### Institutional Information of Bangladesh
+
+https://huggingface.co/datasets/Mahadih534/Institutional-Information-of-Bangladesh
+
+### All Bangladeshi Hospitals
+
+https://huggingface.co/datasets/Mahadih534/all-bangladeshi-hospitals
+
+### Bangladeshi Restaurant Data
+
+https://huggingface.co/datasets/Mahadih534/Bangladeshi-Restaurant-Data
+
+
+⚙️ Installation
+
+Clone the repository
+
+bash
+git clone https://github.com/KauserAhmedAnik/Question_ans_Assistant.git
+
+cd Question_ans_Assistant
+
+
+Install dependencies
+
+bash
+pip install -r requirements.txt
+
+
+🔑 Environment Variables
+
+Create a `.env` file in the project root.
+
+Example:
+
+env
+OPENAI_API_KEY=your_openai_api_key
+TAVILY_API_KEY=your_tavily_api_key
+
+# 🗄️ Database Creation
+
+Run the following command to convert the CSV datasets into SQLite databases.
+
+bash
+python scripts/csv_to_SQlite.py
+
+
+This will generate:
+
+
+institutions.db
+
+hospitals.db
+
+restaurants.db
+
+Database connection
+
+bash 
+python scripts/SQL_connections.py
+
+this will the database with system
+
+# ▶️ Running the Project
+
+Start the AI Agent by running:
+
+bash
+python app.py
+
+
+
+🤖 Available Tools
+
+tools:
+
+InstitutionsDBTool
+
+Handles queries related to:
+
+* Universities
+* Colleges
+* Schools
+* Government Institutions
+* EIIN Information
+* Educational Statistics
+
+
+
+HospitalsDBTool
+
+Handles queries related to:
+
+* Hospitals
+* Clinics
+* Doctors
+* Bed Capacity
+* Medical Facilities
+* Emergency Services
+
+
+
+RestaurantsDBTool
+
+Handles queries related to:
+
+* Restaurants
+* Cuisine
+* Location
+* Ratings
+* Food Categories
+
+
+
+WebSearchTool
+
+Handles general knowledge questions that are not available in the local databases.
+
+Examples:
+
+* Healthcare policy of Bangladesh
+* DGHS
+* Medical education
+* Government organizations
+* General information
+
+
+
+💬 Example Queries
+
+Hospital Queries
+
+
+How many hospitals are in Dhaka?
+
+List the top 10 hospitals by bed capacity.
+
+Find hospitals in Chattogram.
+
+Show hospitals with ICU facilities.
+
+
+
+
+### Institution Queries
+
+```
+List universities in Rajshahi.
+
+How many government institutions are in Khulna?
+
+Find colleges in Dhaka.
+
+Which universities offer medical degrees?
+```
+
+---
+
+### Restaurant Queries
+
+```
+Find restaurants in Chattogram serving biryani.
+
+Show restaurants in Sylhet.
+
+List restaurants with high ratings.
+```
+
+---
+
+### Web Search Queries
+
+```
+What is the healthcare policy of Bangladesh?
+
+What is DGHS?
+
+Explain medical education in Bangladesh.
+
+What is the history of BUET?
+
+
+
+
+🧠 Agent Workflow
+
+
+                    User Query
+                         │
+                         ▼
+                 Main LangChain Agent
+                         │
+        ┌──────────┬──────────┬──────────┬──────────┐
+        ▼          ▼          ▼          ▼
+ Hospital Tool Institution Restaurant Web Search
+        │          │          │          │
+        ▼          ▼          ▼          ▼
+ Hospitals.db Institutions.db Restaurants.db Internet
+```
+
+The AI Agent automatically selects the appropriate tool based on the user's query.
+
+---
+
+# 📌 Future Improvements
+
+* Streamlit Web Interface
+* Conversation Memory
+* Hybrid SQL + Vector Search
+* Data Visualization
+* Multi-step Reasoning
+* API Deployment with FastAPI
+* Docker Support
+* Unit Testing
+* Logging and Monitoring
+
+
+
+🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository.
+2. Create a new feature branch.
+3. Commit your changes.
+4. Push your branch.
+5. Open a Pull Request.
+
+
+
+📄 License
+
+This project is intended for educational and research purposes.
+
+
+
+👨‍💻 Author
+
+ Kauser Ahmed Anik
+
+Developed as a LangChain-based Multi-Tool AI Agent for querying Bangladesh-specific datasets and answering general knowledge questions through intelligent tool routing.
