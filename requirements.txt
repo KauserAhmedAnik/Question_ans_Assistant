@@ -1,0 +1,13 @@
+langchain==1.3.11
+langchain-core
+langchain-community
+langchain-openai
+langgraph
+openai
+duckduckgo-search
+pandas
+sqlalchemy
+python-dotenv
+tabulate
+ddgs
+langchain
