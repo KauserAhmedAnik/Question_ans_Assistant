@@ -1,2 +1,7 @@
 .env
 venv
+__pycache__
+scripts\__pycache__
+scripts\__init__.py
+Agents\__pycache__
+Agents\__init__.py
